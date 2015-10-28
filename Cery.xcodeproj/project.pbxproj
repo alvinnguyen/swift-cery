@@ -7,23 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10FE86F1BDF36650094FCDD /* RecipesNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10FE86E1BDF36650094FCDD /* RecipesNewViewController.swift */; };
+		E10FE8721BDFA6400094FCDD /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10FE8711BDFA6400094FCDD /* Recipe.swift */; };
+		E1A997DF1BDA0B280036C222 /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A997DE1BDA0B280036C222 /* IngredientsViewController.swift */; };
+		E1A997E11BDA0DBB0036C222 /* GroceryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A997E01BDA0DBA0036C222 /* GroceryViewController.swift */; };
 		E1C252241BD90ADE00C7A26D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C252231BD90ADE00C7A26D /* AppDelegate.swift */; };
-		E1C252261BD90ADE00C7A26D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C252251BD90ADE00C7A26D /* ViewController.swift */; };
 		E1C252291BD90ADE00C7A26D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1C252271BD90ADE00C7A26D /* Main.storyboard */; };
 		E1C2522C1BD90ADE00C7A26D /* Cery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1C2522A1BD90ADE00C7A26D /* Cery.xcdatamodeld */; };
 		E1C2522E1BD90ADE00C7A26D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1C2522D1BD90ADE00C7A26D /* Assets.xcassets */; };
 		E1C252311BD90ADE00C7A26D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1C2522F1BD90ADE00C7A26D /* LaunchScreen.storyboard */; };
+		E1C252391BD90EA900C7A26D /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C252381BD90EA900C7A26D /* MainMenuController.swift */; };
+		E1C252441BD9905100C7A26D /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C252431BD9905100C7A26D /* RecipesViewController.swift */; };
+		E1DA82D11BDF094F006A8FBB /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DA82D01BDF094F006A8FBB /* Ingredient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E10FE86E1BDF36650094FCDD /* RecipesNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipesNewViewController.swift; path = View/RecipesNewViewController.swift; sourceTree = "<group>"; };
+		E10FE8711BDFA6400094FCDD /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		E1A997DE1BDA0B280036C222 /* IngredientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
+		E1A997E01BDA0DBA0036C222 /* GroceryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryViewController.swift; sourceTree = "<group>"; };
 		E1C252201BD90ADE00C7A26D /* Cery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C252231BD90ADE00C7A26D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E1C252251BD90ADE00C7A26D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E1C252281BD90ADE00C7A26D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1C2522B1BD90ADE00C7A26D /* Cery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cery.xcdatamodel; sourceTree = "<group>"; };
 		E1C2522D1BD90ADE00C7A26D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1C252301BD90ADE00C7A26D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1C252321BD90ADE00C7A26D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1C252381BD90EA900C7A26D /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
+		E1C252431BD9905100C7A26D /* RecipesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
+		E1DA82D01BDF094F006A8FBB /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E10FE8701BDF366D0094FCDD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E10FE86E1BDF36650094FCDD /* RecipesNewViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		E1C252171BD90ADE00C7A26D = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +76,29 @@
 		E1C252221BD90ADE00C7A26D /* Cery */ = {
 			isa = PBXGroup;
 			children = (
-				E1C252231BD90ADE00C7A26D /* AppDelegate.swift */,
-				E1C252251BD90ADE00C7A26D /* ViewController.swift */,
+				E1DA82CF1BDF081F006A8FBB /* Model */,
+				E10FE8701BDF366D0094FCDD /* View */,
 				E1C252271BD90ADE00C7A26D /* Main.storyboard */,
 				E1C2522D1BD90ADE00C7A26D /* Assets.xcassets */,
-				E1C2522F1BD90ADE00C7A26D /* LaunchScreen.storyboard */,
+				E1C252231BD90ADE00C7A26D /* AppDelegate.swift */,
 				E1C252321BD90ADE00C7A26D /* Info.plist */,
 				E1C2522A1BD90ADE00C7A26D /* Cery.xcdatamodeld */,
+				E1C252381BD90EA900C7A26D /* MainMenuController.swift */,
+				E1C252431BD9905100C7A26D /* RecipesViewController.swift */,
+				E1A997DE1BDA0B280036C222 /* IngredientsViewController.swift */,
+				E1A997E01BDA0DBA0036C222 /* GroceryViewController.swift */,
+				E1C2522F1BD90ADE00C7A26D /* LaunchScreen.storyboard */,
 			);
 			path = Cery;
+			sourceTree = "<group>";
+		};
+		E1DA82CF1BDF081F006A8FBB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1DA82D01BDF094F006A8FBB /* Ingredient.swift */,
+				E10FE8711BDFA6400094FCDD /* Recipe.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +171,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1C252261BD90ADE00C7A26D /* ViewController.swift in Sources */,
+				E1A997DF1BDA0B280036C222 /* IngredientsViewController.swift in Sources */,
 				E1C252241BD90ADE00C7A26D /* AppDelegate.swift in Sources */,
+				E1DA82D11BDF094F006A8FBB /* Ingredient.swift in Sources */,
+				E1A997E11BDA0DBB0036C222 /* GroceryViewController.swift in Sources */,
+				E1C252441BD9905100C7A26D /* RecipesViewController.swift in Sources */,
 				E1C2522C1BD90ADE00C7A26D /* Cery.xcdatamodeld in Sources */,
+				E10FE86F1BDF36650094FCDD /* RecipesNewViewController.swift in Sources */,
+				E1C252391BD90EA900C7A26D /* MainMenuController.swift in Sources */,
+				E10FE8721BDFA6400094FCDD /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,10 +290,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alvin Nguyen (RTAGUFLU6W)";
 				INFOPLIST_FILE = Cery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = appsbyalvin.Cery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d55fac90-5c5d-46f2-a551-af404f9b934e";
 			};
 			name = Debug;
 		};
@@ -261,10 +304,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alvin Nguyen (RTAGUFLU6W)";
 				INFOPLIST_FILE = Cery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = appsbyalvin.Cery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d55fac90-5c5d-46f2-a551-af404f9b934e";
 			};
 			name = Release;
 		};
@@ -287,6 +333,7 @@
 				E1C252371BD90ADE00C7A26D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
