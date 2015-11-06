@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="90" id="bgM-fA-Qze" customClass="RecipeTableViewCell" customModule="Cery" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="90"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bgM-fA-Qze" id="dPp-hF-NkG">
+                <rect key="frame" x="0.0" y="0.0" width="325" height="89"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recipeName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kXE-mb-uF0">
+                        <rect key="frame" x="88" y="8" width="219" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredientDescription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bA-2r-3PR">
+                        <rect key="frame" x="88" y="29" width="219" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="EnN-tR-fnc">
+                        <rect key="frame" x="8" y="10" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="d9Q-6A-dQu"/>
+                            <constraint firstAttribute="height" constant="70" id="jA0-I8-8BN"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kXE-mb-uF0" firstAttribute="top" secondItem="dPp-hF-NkG" secondAttribute="topMargin" id="4SC-ke-BxB"/>
+                    <constraint firstItem="EnN-tR-fnc" firstAttribute="centerY" secondItem="dPp-hF-NkG" secondAttribute="centerY" id="7XS-Of-TBl"/>
+                    <constraint firstItem="kXE-mb-uF0" firstAttribute="leading" secondItem="EnN-tR-fnc" secondAttribute="trailing" constant="10" id="JqT-Sa-Eax"/>
+                    <constraint firstItem="2bA-2r-3PR" firstAttribute="top" secondItem="kXE-mb-uF0" secondAttribute="bottom" id="czp-uV-VhM"/>
+                    <constraint firstItem="2bA-2r-3PR" firstAttribute="leading" secondItem="EnN-tR-fnc" secondAttribute="trailing" constant="10" id="jYX-8W-0Tt"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="kXE-mb-uF0" secondAttribute="trailing" constant="10" id="o6L-tD-ggy"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="EnN-tR-fnc" secondAttribute="leading" id="p1B-Du-2n0"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="2bA-2r-3PR" secondAttribute="trailing" constant="10" id="q1b-JY-Ixu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="ingredientDescriptionTextLabel" destination="2bA-2r-3PR" id="IRa-uE-ZUJ"/>
+                <outlet property="recipeImageView" destination="EnN-tR-fnc" id="b9E-zU-H9s"/>
+                <outlet property="recipeNameTextLabel" destination="kXE-mb-uF0" id="uRT-ev-t2h"/>
+            </connections>
+            <point key="canvasLocation" x="596.5" y="527.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="logo_launchscreen" width="256" height="256"/>
+    </resources>
+</document>

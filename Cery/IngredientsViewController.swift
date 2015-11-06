@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class IngredientsViewController: UITableViewController {
 
+    let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.navigationController?.navigationBar.barTintColor = UIColor.greenColor()
@@ -19,6 +22,7 @@ class IngredientsViewController: UITableViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "ingredients_navigation"), forBarMetrics: .Default)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -47,7 +51,11 @@ class IngredientsViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
-
+    
+    @IBAction func saveNewIngredient(seque: UIStoryboardSegue){
+        
+    }
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

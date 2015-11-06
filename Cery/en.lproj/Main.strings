@@ -1,0 +1,24 @@
+
+/* Class = "UITextField"; placeholder = "Ingredient Seller"; ObjectID = "EMc-gK-GBM"; */
+"EMc-gK-GBM.placeholder" = "Ingredient Seller";
+
+/* Class = "UITextField"; placeholder = "Ingredient Name"; ObjectID = "IQE-lM-FAn"; */
+"IQE-lM-FAn.placeholder" = "Ingredient Name";
+
+/* Class = "UIViewController"; title = "New"; ObjectID = "VL1-c2-W5Z"; */
+"VL1-c2-W5Z.title" = "New";
+
+/* Class = "UITextField"; placeholder = "Recipe's Name"; ObjectID = "WGA-5O-eEG"; */
+"WGA-5O-eEG.placeholder" = "Recipe's Name";
+
+/* Class = "UIButton"; normalTitle = "MY INGREDIENTS"; ObjectID = "bBu-2c-5jy"; */
+"bBu-2c-5jy.normalTitle" = "MY INGREDIENTS";
+
+/* Class = "UIButton"; normalTitle = "MY RECIPES"; ObjectID = "eIL-hl-lTL"; */
+"eIL-hl-lTL.normalTitle" = "MY RECIPES";
+
+/* Class = "UIButton"; normalTitle = "Add new ingredient"; ObjectID = "iRg-gh-21i"; */
+"iRg-gh-21i.normalTitle" = "Add new ingredient";
+
+/* Class = "UILabel"; text = "Pick your ingredients below"; ObjectID = "zLx-34-JSE"; */
+"zLx-34-JSE.text" = "Pick your ingredients below";

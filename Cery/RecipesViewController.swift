@@ -7,31 +7,50 @@
 //
 
 import UIKit
+import CoreData
 
 class RecipesViewController: UITableViewController {
-    var recipes: [Recipe] = []
+    let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var recipes: [NSManagedObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.navigationController?.navigationBar.barTintColor = UIColor.greenColor()
 
         //self.navigationController?.navigationBar.barTintColor = UIColor(red: 50.0/255, green: 150.0/255, blue: 65.0/255, alpha: 1.0)
-        self.title = "Recipes"
+//        self.title = "Recipes"
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "recipes_navigation"), forBarMetrics: .Default)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        let nib = UINib(nibName: "recipeTableCell", bundle: nil)
+        self.tableView.registerNib(nib, forCellReuseIdentifier: "Recipe Cell")
+        //self.tableView.contentInset = UIEdgeInsetsMake(0, -15, 0, 0);
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+//        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 80.0
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        // fetching and showing available recipes
+        do {
+            let fetchRequest = NSFetchRequest(entityName: "Recipe")
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            recipes = results as! [NSManagedObject]
+            self.tableView.reloadData()
+        } catch let error as NSError {
+            print("Could not fetch \(error)")
+        }
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,13 +66,17 @@ class RecipesViewController: UITableViewController {
      - parameter name:        recipe name
      - parameter ingredients: array of ingredients
      */
-    func addNewRecipe(name: String, ingredients: [Ingredient]) {
-        recipes.append(Recipe(name: name, ingredients: ingredients));
+    func addNewRecipe(name: String, ingredients: NSMutableSet) {
+//        let newRecipe = NSEntityDescription.insertNewObjectForEntityForName("Recipe", inManagedObjectContext: self.managedContext) as! Recipe
+//        newRecipe.name = name
+//        newRecipe.ingredients = ingredients
+        
+        //recipes.append(Recipe(name: name, ingredients: ingredients));
         self.tableView.reloadData()
     }
     
-    func modifyRecipe(recipeId: Int, name: String, ingredients: [Ingredient]) {
-        recipes[recipeId] = Recipe(name: name, ingredients: ingredients);
+    func modifyRecipe(recipeId: Int, name: String, ingredients: NSMutableSet) {
+//        recipes[recipeId] = Recipe(name: name, ingredients: ingredients);
         self.tableView.reloadData()
     }
 
@@ -70,15 +93,36 @@ class RecipesViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Recipe Cell", forIndexPath: indexPath)
+        let cell:RecipeTableViewCell = tableView.dequeueReusableCellWithIdentifier("Recipe Cell") as! RecipeTableViewCell
         
         // Configure the cell...
-        let recipe = recipes[indexPath.row]
-        cell.textLabel?.text = recipe.name
-        cell.detailTextLabel?.text = String(recipe.ingredients.count)
+        let recipe = (recipes[indexPath.row]) as! Recipe
+        cell.recipeNameTextLabel?.text = recipe.name
+        if recipe.photo != nil {
+            cell.recipeImageView?.contentMode = UIViewContentMode.ScaleAspectFill
+            cell.recipeImageView?.image = UIImage.init(data: recipe.photo!)
+        }
+        var vendors: [String] = []
+        var ingredients: [String] = []
+        for ingredient in recipe.ingredients! {
+            let _ingredient = ingredient as! Ingredient
+            ingredients.append(_ingredient.name!.lowercaseString)
+            if vendors.indexOf(_ingredient.vendor!) == nil {
+                vendors.append((ingredient as! Ingredient).vendor!)
+            }
+        }
+        var ingredientDescription: String = "Requires "
+        ingredientDescription += ingredients.joinWithSeparator(", ")
+        ingredientDescription += "\nFrom "
+        ingredientDescription += vendors.joinWithSeparator(", ")
+        cell.ingredientDescriptionTextLabel?.text = ingredientDescription
         return cell
     }
-
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 90
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -91,11 +135,16 @@ class RecipesViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            managedContext.deleteObject(recipes[indexPath.row])
             recipes.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("recipeEdit", sender: self)
     }
 
     /*
@@ -123,7 +172,7 @@ class RecipesViewController: UITableViewController {
             let recipeNewViewController = segue.destinationViewController as! RecipesNewViewController
             let selectedIndex = self.tableView.indexPathForSelectedRow?.row
             let recipe = recipes[selectedIndex!]
-            recipeNewViewController.populateViewData(selectedIndex!, recipeName: recipe.name, ingredientList: recipe.ingredients)
+            recipeNewViewController.selectedRecipe = recipe
         }
     }
 

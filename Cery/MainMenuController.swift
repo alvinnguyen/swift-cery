@@ -7,29 +7,69 @@
 //
 
 import UIKit
+import CoreData
 
 class MainMenuController: UIViewController {
+    
+    @IBOutlet weak var receipeButton: UIButton!
 
-    @IBOutlet weak var recipesTouch: UIImageView!
-    @IBOutlet weak var ingredientsTouch: UIImageView!
-    @IBOutlet weak var groceryTouch: UIImageView!
+    let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var tap = UITapGestureRecognizer(target: self, action: Selector("routeRecipes"))
-        recipesTouch.addGestureRecognizer(tap)
-        recipesTouch.userInteractionEnabled = true
-
-        tap = UITapGestureRecognizer(target: self, action: Selector("routeIngredients"))
-        ingredientsTouch.addGestureRecognizer(tap)
-        ingredientsTouch.userInteractionEnabled = true
-
-        tap = UITapGestureRecognizer(target: self, action: Selector("routeGrocery"))
-        groceryTouch.addGestureRecognizer(tap)
-        groceryTouch.userInteractionEnabled = true
-
+//        let tap = UITapGestureRecognizer(target: self, action: Selector("routeRecipes"))
+//        recipesTouch.addGestureRecognizer(tap)
+//        recipesTouch.userInteractionEnabled = true
+//
+//        tap = UITapGestureRecognizer(target: self, action: Selector("routeIngredients"))
+//        ingredientsTouch.addGestureRecognizer(tap)
+//        ingredientsTouch.userInteractionEnabled = true
+//
+//        tap = UITapGestureRecognizer(target: self, action: Selector("routeGrocery"))
+//        groceryTouch.addGestureRecognizer(tap)
+//        groceryTouch.userInteractionEnabled = true
         
         // Do any additional setup after loading the view.
+        let topBorder:CALayer = CALayer()
+        topBorder.frame = CGRectMake(0, 0, (receipeButton.frame.size.width/2), 1)
+        topBorder.backgroundColor = UIColor(white: 1.0, alpha: 0.7).CGColor
+        let bottomBorder:CALayer = CALayer()
+        bottomBorder.frame = CGRectMake(0, receipeButton.frame.size.height, (receipeButton.frame.size.width/2), 1)
+        bottomBorder.backgroundColor = UIColor(white: 1.0, alpha: 0.7).CGColor
+        receipeButton.layer.addSublayer(topBorder)
+        receipeButton.layer.addSublayer(bottomBorder)
+        
+        // Load dummy data
+        // self.loadDummyData()
+    }
+    
+    func loadDummyData() {
+        // Let's fetch
+        do {
+            let fetchRequest = NSFetchRequest(entityName: "Ingredient")
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            if results.count == 0 {
+                Ingredient.createInManagedObjectContext(managedContext, name: "Onion", vendor: "Springvale")
+                Ingredient.createInManagedObjectContext(managedContext, name: "Oil", vendor: "Coles")
+                Ingredient.createInManagedObjectContext(managedContext, name: "Pasta", vendor: "Springvale")
+                Ingredient.createInManagedObjectContext(managedContext, name: "Tomato", vendor: "Coles")
+                Ingredient.createInManagedObjectContext(managedContext, name: "Vegetable", vendor: "Springvale")
+                Ingredient.createInManagedObjectContext(managedContext, name: "Apple", vendor: "Springvale")
+                Ingredient.createInManagedObjectContext(managedContext, name: "Mandarine", vendor: "Springvale")
+                Ingredient.createInManagedObjectContext(managedContext, name: "Eggs", vendor: "Springvale")
+                Ingredient.createInManagedObjectContext(managedContext, name: "Salt", vendor: "Springvale")
+                Ingredient.createInManagedObjectContext(managedContext, name: "Chicken Stock", vendor: "Springvale")
+                Ingredient.createInManagedObjectContext(managedContext, name: "Beef", vendor: "Springvale")
+                Ingredient.createInManagedObjectContext(managedContext, name: "Fish", vendor: "Springvale")
+            }
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not fetch \(error)")
+        }
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.Default
     }
     
     override func viewWillAppear(animated: Bool) {
