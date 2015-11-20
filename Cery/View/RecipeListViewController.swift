@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FontAwesome_swift
 
 class RecipeListViewController: UIViewController {
     
@@ -28,49 +29,43 @@ class RecipeListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // fetching and showing available recipes
-        do {
-            print("fetching recipes")
-            let fetchRequest = NSFetchRequest(entityName: "Recipe")
-            let results = try managedContext.executeFetchRequest(fetchRequest)
-            recipes = results as! [NSManagedObject]
-            for recipe in recipes {
-                cachedImage.append(UIImage(data: (recipe as! Recipe).photo!)!)
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error)")
-        }
-        
-        // navigation bar
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.translucent = true
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        // navigation item
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addTapped")
+
         
         // Screen and layout
         self.screenWidth = screenSize.width
         self.screenHeight = screenSize.height
         print([screenWidth, screenHeight])
+        
+        self.view.clipsToBounds = true
 
+        // Setup background image
         let backgroundImageView = UIImageView(frame: self.view.frame)
-        backgroundImageView.image = UIImage(named: "ingredients")
+        backgroundImageView.image = UIImage(named: "main_storyboard_background")
         backgroundImageView.clipsToBounds = true
         backgroundImageView.contentMode = .ScaleAspectFill
         self.view.addSubview(backgroundImageView)
         
+        // Setup blur view over the background image
         let effect: UIBlurEffect = UIBlurEffect(style: .Light)
         let blurEffectView = UIVisualEffectView(frame: self.view.frame)
         blurEffectView.effect = effect
         self.view.addSubview(blurEffectView)
         
+        // Setup collection view
         let collectionViewLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .Horizontal
         collectionViewLayout.minimumInteritemSpacing = 0
         collectionViewLayout.minimumLineSpacing = screenWidth*0.025
         collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: screenWidth*0.075, bottom: 0, right: screenWidth*0.075)
         
-        self.collectionView = UICollectionView(frame: CGRect(x: 0, y: 30, width: screenWidth, height: screenHeight-30), collectionViewLayout: collectionViewLayout)
+        // TODO: Left most card
+        // self.collectionView = UICollectionView(frame: CGRect(x: -self.screenWidth*0.85, y: 30, width: screenWidth+self.screenWidth*0.85, height: screenHeight-30), collectionViewLayout: collectionViewLayout)
+
+        self.loadCoreData()
+        // Setup collection view cell and view
+        self.collectionView = UICollectionView(frame: CGRect(x: 0, y: 40, width: self.screenWidth, height: screenHeight-30), collectionViewLayout: collectionViewLayout)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.decelerationRate = 0.8
@@ -87,19 +82,54 @@ class RecipeListViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         
+        // transparent navigation bar
+        self.title = "My Recipe"
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    override func viewWillLayoutSubviews() {
-        // Calculate the right width!
-//        let itemCount: Int = collectionView.numberOfItemsInSection(0)
-//        let contentWidth: Float = ((Float(itemCount) + 20.0) * 240.0) + 500.0
-//        let screenHeight: CGFloat = UIScreen.mainScreen().bounds.size.height
-//        collectionView.contentSize = CGSizeMake(CGFloat(contentWidth), screenHeight)
-//        print(collectionView.contentSize)
-    }
+    func loadCoreData() {
+        // fetching and showing available recipes
+        do {
+            print("fetching recipes")
+            let fetchRequest = NSFetchRequest(entityName: "Recipe")
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            recipes = results as! [NSManagedObject]
+            cachedImage.removeAll()
+            for recipe in recipes {
+                cachedImage.append(UIImage(data: (recipe as! Recipe).photo!)!)
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error)")
+        }
 
+    }
+    
+    // Function new navigation tapped
+    func addTapped() {
+        let recipeNewViewController = self.storyboard?.instantiateViewControllerWithIdentifier("RecipesNewViewController") as! RecipesNewViewController
+        self.navigationController?.pushViewController(recipeNewViewController, animated: true)
+        print("Add button tapped")
+    }
+    
+    @IBAction func saveNewRecipe(seque: UIStoryboardSegue){
+        print("reloading data")
+        self.loadCoreData()
+        self.collectionView.reloadData()
+        // self.collectionView.setContentOffset(CGPoint(x: CGFloat.max, y: 0.0), animated: true)
+        // self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: recipes.count-1, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Right, animated: true)
+        let scrollToItem:CGFloat = CGFloat(recipes.count)
+        let offsetX = (scrollToItem - 1) * screenWidth * 0.85 + (scrollToItem - 1) * screenWidth * 0.025
+        self.collectionView.setContentOffset(CGPoint(x: offsetX, y: 0.0), animated: true)
+
+    }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -118,7 +148,9 @@ extension RecipeListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (recipes.count + 1)
+        // TODO: left most card
+        // return (recipes.count + 1)
+        return recipes.count
     }
     
     func asyncLoadImage(data: NSData, imageView: UIImageView) {
@@ -134,32 +166,66 @@ extension RecipeListViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIdentifier, forIndexPath: indexPath) as!RecipeListCollectionViewCell
-        if (indexPath.item == 0) {
-            var frame: CGRect = cell.recipeName.frame
-            let cellHeight = cell.frame.size.height
-            let textLabelHeight = cell.recipeName.frame.size.height
-            frame.origin.y = round((textLabelHeight-cellHeight)/2)
-            print(round((textLabelHeight-cellHeight)/2))
-            cell.recipeName.frame = frame
-            cell.recipeName.text = "Add New"
-            cell.recipeImageView.image = UIImage(named: "main_storyboard_background")
-            cell.backgroundColor = UIColor.redColor()
-        } else {
-            let recipe = recipes[indexPath.item - 1] as! Recipe
-            cell.recipeName.text = recipe.name
-            cell.recipeImageView.image = cachedImage[indexPath.item - 1]
-            // cell.recipeImageView.image = UIImage(data: recipe.photo!)
-            // asyncLoadImage(recipe.photo!, imageView: cell.recipeImageView)
+        // TODO: left most card
+//        if (indexPath.item == 0) {
+//            cell.recipeName.hidden = true
+//            cell.addTextView.hidden = false
+//            cell.addTextView.text = "Add New"
+//            cell.recipeImageView.image = UIImage(named: "main_storyboard_background")
+//            cell.backgroundColor = UIColor.redColor()
+//        } else {
+        let recipe = recipes[indexPath.item] as! Recipe
+        cell.recipeName.hidden = false
+        cell.recipeName.text = recipe.name?.uppercaseString
+        cell.recipeImageView.image = cachedImage[indexPath.item]
+
+        var vendors: [String] = []
+        var ingredients: [String] = []
+        for ingredient in recipe.ingredients! {
+            let _ingredient = ingredient as! Ingredient
+            ingredients.append(_ingredient.name!.lowercaseString)
+            if vendors.indexOf(_ingredient.vendor!) == nil {
+                vendors.append((ingredient as! Ingredient).vendor!)
+            }
         }
+//        var ingredientDescription: String = "Requires "
+//        ingredientDescription += ingredients.joinWithSeparator(", ")
+//        ingredientDescription += " from "
+//        ingredientDescription += vendors.joinWithSeparator(", ")
+        cell.recipeIngredient.text = String(recipe.ingredients!.count) + " ingredients"
+        cell.recipeMarket.text = String(vendors.count) + " markets"
+        
+        cell.recipeDelete.addTarget(self, action: "deletePressed:", forControlEvents: .TouchUpInside)
+        // cell.recipeName.font = UIFont(name: "FontAwesome", size: 14.00)
+        // cell.recipeName.font = UIFont.fontAwesomeOfSize(16.00)
+        // cell.recipeName.text = String.fontAwesomeIconWithName(FontAwesome.Github)
+        
+
+        // cell.recipeImageView.image = UIImage(data: recipe.photo!)
+            // asyncLoadImage(recipe.photo!, imageView: cell.recipeImageView)
+//        }
         
         return cell
+    }
+    
+    func deletePressed(sender: UIButton!) {
+        let alertView = UIAlertController(title: "Warning", message: "Remove this recipe?", preferredStyle: .Alert)
+        alertView.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) in
+            let buttonPosition = sender.convertPoint(CGPointZero, toView: self.collectionView)
+            let indexPath:NSIndexPath = (self.collectionView.indexPathForItemAtPoint(buttonPosition))!
+            self.managedContext.deleteObject(self.recipes[indexPath.item])
+            self.recipes.removeAtIndex(indexPath.item)
+            self.collectionView.deleteItemsAtIndexPaths([indexPath])
+        }))
+        alertView.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
+        self.presentViewController(alertView, animated: true, completion: nil)
     }
 }
 
 extension RecipeListViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
-        return CGSizeMake(self.screenWidth*0.85, (self.screenHeight-64)*0.85);
+        return CGSizeMake(self.screenWidth*0.85, (self.screenHeight-64)*0.9);
     }
 
     // compute collection view content offset in method bellow

@@ -11,7 +11,7 @@ import CoreData
 
 class MainMenuController: UIViewController {
     
-    @IBOutlet weak var receipeButton: UIButton!
+    let screenSize:CGRect = UIScreen.mainScreen().bounds
 
     let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
@@ -30,14 +30,36 @@ class MainMenuController: UIViewController {
 //        groceryTouch.userInteractionEnabled = true
         
         // Do any additional setup after loading the view.
+        
+        let recipeLegacyButton = UIButton(frame: CGRect(x: 20, y: screenSize.height-20-50, width: screenSize.width-40, height: 50));
+        recipeLegacyButton.backgroundColor = UIColor.clearColor()
+        recipeLegacyButton.setTitle("Recipe Table View", forState: .Normal)
+        recipeLegacyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         let topBorder:CALayer = CALayer()
-        topBorder.frame = CGRectMake(0, 0, (receipeButton.frame.size.width/2), 1)
+        topBorder.frame = CGRectMake(0, 0, recipeLegacyButton.frame.size.width, 1)
         topBorder.backgroundColor = UIColor(white: 1.0, alpha: 0.7).CGColor
         let bottomBorder:CALayer = CALayer()
-        bottomBorder.frame = CGRectMake(0, receipeButton.frame.size.height, (receipeButton.frame.size.width/2), 1)
+        bottomBorder.frame = CGRectMake(0, recipeLegacyButton.frame.size.height, (recipeLegacyButton.frame.size.width), 1)
         bottomBorder.backgroundColor = UIColor(white: 1.0, alpha: 0.7).CGColor
-        receipeButton.layer.addSublayer(topBorder)
-        receipeButton.layer.addSublayer(bottomBorder)
+        recipeLegacyButton.layer.addSublayer(topBorder)
+        recipeLegacyButton.layer.addSublayer(bottomBorder)
+        recipeLegacyButton.addTarget(self, action: "routeRecipes", forControlEvents: .TouchUpInside)
+        self.view.addSubview(recipeLegacyButton)
+        
+        let recipeButton = UIButton(frame: CGRect(x: 20, y: screenSize.height-20-50-20-50, width: screenSize.width-40, height: 50));
+        recipeButton.backgroundColor = UIColor.clearColor()
+        recipeButton.setTitle("Recipe Card View", forState: .Normal)
+        recipeButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        let topBorder2:CALayer = CALayer()
+        topBorder2.frame = CGRectMake(0, 0, recipeLegacyButton.frame.size.width, 1)
+        topBorder2.backgroundColor = UIColor(white: 1.0, alpha: 0.7).CGColor
+        let bottomBorder2:CALayer = CALayer()
+        bottomBorder2.frame = CGRectMake(0, recipeLegacyButton.frame.size.height, (recipeLegacyButton.frame.size.width), 1)
+        bottomBorder2.backgroundColor = UIColor(white: 1.0, alpha: 0.7).CGColor
+        recipeButton.layer.addSublayer(topBorder2)
+        recipeButton.layer.addSublayer(bottomBorder2)
+        recipeButton.addTarget(self, action: "routeRecipesCollection", forControlEvents: .TouchUpInside)
+        self.view.addSubview(recipeButton)
         
         // Load dummy data
         // self.loadDummyData()
@@ -75,6 +97,11 @@ class MainMenuController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
         self.navigationController?.setNavigationBarHidden(true, animated: animated)        
+    }
+
+    func routeRecipesCollection() {
+        let recipeListViewControllerObject = self.storyboard?.instantiateViewControllerWithIdentifier("RecipesListViewControllerIdentifier") as? RecipeListViewController
+        self.navigationController?.pushViewController(recipeListViewControllerObject!, animated: true)
     }
     
     func routeRecipes() {

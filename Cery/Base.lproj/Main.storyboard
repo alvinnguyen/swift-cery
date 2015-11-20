@@ -22,56 +22,17 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_storyboard_background" translatesAutoresizingMaskIntoConstraints="NO" id="j1g-7y-caI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIL-hl-lTL">
-                                <rect key="frame" x="20" y="530" width="560" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="xqg-Um-M0y"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <state key="normal" title="MY RECIPES">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="YJZ-7U-Fi5" kind="show" id="24P-m3-NDi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKA-UL-YEM">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="177" y="72" width="46" height="30"/>
-                                </variation>
-                                <connections>
-                                    <segue destination="cuc-eC-aOX" kind="show" id="mHX-fK-7Vg"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="eIL-hl-lTL" secondAttribute="trailing" id="5UD-tq-CHo"/>
                             <constraint firstItem="j1g-7y-caI" firstAttribute="top" secondItem="DOo-bE-wp3" secondAttribute="top" id="KcT-js-ZjW"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="eIL-hl-lTL" secondAttribute="leading" id="Ntj-15-Bim"/>
-                            <constraint firstItem="QeO-dh-0nX" firstAttribute="top" secondItem="eIL-hl-lTL" secondAttribute="bottom" constant="20" id="axt-DT-WTK"/>
                             <constraint firstAttribute="trailing" secondItem="j1g-7y-caI" secondAttribute="trailing" id="jke-mM-8xR"/>
                             <constraint firstItem="j1g-7y-caI" firstAttribute="leading" secondItem="DOo-bE-wp3" secondAttribute="leading" id="qUf-cA-qTf"/>
                             <constraint firstItem="j1g-7y-caI" firstAttribute="bottom" secondItem="QeO-dh-0nX" secondAttribute="top" id="uxC-0U-0Wf"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="gKA-UL-YEM"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="gKA-UL-YEM"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="tDj-7q-iWF"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <connections>
-                        <outlet property="receipeButton" destination="eIL-hl-lTL" id="kjm-NS-lur"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5r-BI-Zb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -80,13 +41,13 @@
         <!--Recipe List-->
         <scene sceneID="Vii-jM-89E">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="cuc-eC-aOX" customClass="RecipeListViewController" customModule="Cery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecipesListViewControllerIdentifier" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cuc-eC-aOX" customClass="RecipeListViewController" customModule="Cery" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hbq-Jf-6TO"/>
                         <viewControllerLayoutGuide type="bottom" id="6cz-8w-gUu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MWb-rF-ZMn">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -101,7 +62,7 @@
         <!--Recipes-->
         <scene sceneID="MU7-Y8-ma6">
             <objects>
-                <tableViewController storyboardIdentifier="RecipesViewControllerIdentifier" id="YJZ-7U-Fi5" customClass="RecipesViewController" customModule="Cery" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RecipesViewControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YJZ-7U-Fi5" customClass="RecipesViewController" customModule="Cery" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tLr-OA-DxK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,7 +73,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oko-mM-WYl" id="B1w-Hx-m7I">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -153,7 +114,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7OS-di-dnB" id="Bjd-qw-gGK">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -171,7 +132,7 @@
         <!--New-->
         <scene sceneID="5rt-5P-OLS">
             <objects>
-                <viewController title="New" id="VL1-c2-W5Z" customClass="RecipesNewViewController" customModule="Cery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecipesNewViewController" title="New" id="VL1-c2-W5Z" customClass="RecipesNewViewController" customModule="Cery" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fz3-qF-IJb"/>
                         <viewControllerLayoutGuide type="bottom" id="h9H-KA-W7E"/>
@@ -185,7 +146,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="mXS-Ap-5HN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Add new ingredient" backgroundImage="ingredients_navigation">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -359,7 +320,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="L8L-Nd-HcS"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="sqi-81-E7a">
                             <connections>
-                                <segue destination="TIe-bG-ppd" kind="unwind" identifier="saveRecipeSegue" unwindAction="saveNewRecipe:" id="22A-I7-ywM"/>
+                                <segue destination="TIe-bG-ppd" kind="unwind" identifier="saveRecipeSegue" unwindAction="saveNewRecipe:" id="MzE-wO-Xjl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -390,7 +351,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eKh-DR-E4M" id="oRd-rx-WU4">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -545,7 +506,7 @@
     <resources>
         <image name="ingredients_navigation" width="320" height="62"/>
         <image name="logo_launchscreen" width="256" height="256"/>
-        <image name="main_storyboard_background" width="1080" height="1920"/>
+        <image name="main_storyboard_background" width="540" height="960"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Uf-9i-sdf"/>

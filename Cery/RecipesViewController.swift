@@ -56,9 +56,6 @@ class RecipesViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func saveNewRecipe(seque: UIStoryboardSegue){
-        
-    }
     
     /**
      Adding new recipe into the array

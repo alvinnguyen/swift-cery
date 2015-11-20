@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		351AC8B0825610A8A7977530 /* Pods_Cery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8BAB754E48C30614B33871B /* Pods_Cery.framework */; };
 		E10FE86F1BDF36650094FCDD /* RecipesNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10FE86E1BDF36650094FCDD /* RecipesNewViewController.swift */; };
 		E10FE8721BDFA6400094FCDD /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10FE8711BDFA6400094FCDD /* RecipeModel.swift */; };
 		E12DC03E1BEA19ED001B1DD0 /* RecipeListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12DC03D1BEA19ED001B1DD0 /* RecipeListCollectionViewCell.swift */; };
@@ -26,11 +27,15 @@
 		E1C252311BD90ADE00C7A26D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1C2522F1BD90ADE00C7A26D /* LaunchScreen.storyboard */; };
 		E1C252391BD90EA900C7A26D /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C252381BD90EA900C7A26D /* MainMenuController.swift */; };
 		E1C252441BD9905100C7A26D /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C252431BD9905100C7A26D /* RecipesViewController.swift */; };
+		E1C49B431BEDBC6D00C27447 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1C49B421BEDBC6D00C27447 /* fontawesome-webfont.ttf */; };
 		E1DA82D11BDF094F006A8FBB /* IngredientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DA82D01BDF094F006A8FBB /* IngredientModel.swift */; };
 		E1DE9CAD1BE612CB0024A928 /* IngredientNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE9CAC1BE612CB0024A928 /* IngredientNewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		323D98B6BAF29B32F4A74E91 /* Pods-Cery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cery/Pods-Cery.release.xcconfig"; sourceTree = "<group>"; };
+		88191478A05D0DF98D285669 /* Pods-Cery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cery/Pods-Cery.debug.xcconfig"; sourceTree = "<group>"; };
+		C8BAB754E48C30614B33871B /* Pods_Cery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10FE86E1BDF36650094FCDD /* RecipesNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipesNewViewController.swift; path = View/RecipesNewViewController.swift; sourceTree = "<group>"; };
 		E10FE8711BDFA6400094FCDD /* RecipeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		E12DC03D1BEA19ED001B1DD0 /* RecipeListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeListCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -52,6 +57,7 @@
 		E1C252321BD90ADE00C7A26D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1C252381BD90EA900C7A26D /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		E1C252431BD9905100C7A26D /* RecipesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
+		E1C49B421BEDBC6D00C27447 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../../../Desktop/font-awesome-4.4.0/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		E1DA82D01BDF094F006A8FBB /* IngredientModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientModel.swift; sourceTree = "<group>"; };
 		E1DE9CAC1BE612CB0024A928 /* IngredientNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IngredientNewViewController.swift; path = View/IngredientNewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,21 +67,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				351AC8B0825610A8A7977530 /* Pods_Cery.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E6103F8F2CCC4B414513840 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88191478A05D0DF98D285669 /* Pods-Cery.debug.xcconfig */,
+				323D98B6BAF29B32F4A74E91 /* Pods-Cery.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D4812CB11A61BF9547191B7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C8BAB754E48C30614B33871B /* Pods_Cery.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E10FE8701BDF366D0094FCDD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E173315E1BE5D96700D5354B /* RecipeTableViewCell.swift */,
 				E12DC03D1BEA19ED001B1DD0 /* RecipeListCollectionViewCell.swift */,
-				E1933F421BE8A870005EF88F /* RecipeListViewController.swift */,
-				E1A997DE1BDA0B280036C222 /* IngredientsViewController.swift */,
-				E1C252431BD9905100C7A26D /* RecipesViewController.swift */,
-				E1DE9CAC1BE612CB0024A928 /* IngredientNewViewController.swift */,
-				E10FE86E1BDF36650094FCDD /* RecipesNewViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -85,6 +105,8 @@
 			children = (
 				E1C252221BD90ADE00C7A26D /* Cery */,
 				E1C252211BD90ADE00C7A26D /* Products */,
+				7E6103F8F2CCC4B414513840 /* Pods */,
+				D4812CB11A61BF9547191B7B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,20 +121,41 @@
 		E1C252221BD90ADE00C7A26D /* Cery */ = {
 			isa = PBXGroup;
 			children = (
+				E1C49B411BEDBB0100C27447 /* Fonts */,
+				E1C49B3B1BEC5A4A00C27447 /* Controller */,
 				E1DA82CF1BDF081F006A8FBB /* Model */,
 				E10FE8701BDF366D0094FCDD /* View */,
 				E1C252271BD90ADE00C7A26D /* Main.storyboard */,
 				E173315C1BE5D82200D5354B /* recipeTableCell.xib */,
-				E173315E1BE5D96700D5354B /* RecipeTableViewCell.swift */,
 				E1C2522D1BD90ADE00C7A26D /* Assets.xcassets */,
 				E1C252231BD90ADE00C7A26D /* AppDelegate.swift */,
 				E1C252321BD90ADE00C7A26D /* Info.plist */,
 				E1C2522A1BD90ADE00C7A26D /* Cery.xcdatamodeld */,
-				E1C252381BD90EA900C7A26D /* MainMenuController.swift */,
-				E1A997E01BDA0DBA0036C222 /* GroceryViewController.swift */,
 				E1C2522F1BD90ADE00C7A26D /* LaunchScreen.storyboard */,
 			);
 			path = Cery;
+			sourceTree = "<group>";
+		};
+		E1C49B3B1BEC5A4A00C27447 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E1C252381BD90EA900C7A26D /* MainMenuController.swift */,
+				E1933F421BE8A870005EF88F /* RecipeListViewController.swift */,
+				E1A997DE1BDA0B280036C222 /* IngredientsViewController.swift */,
+				E1C252431BD9905100C7A26D /* RecipesViewController.swift */,
+				E1DE9CAC1BE612CB0024A928 /* IngredientNewViewController.swift */,
+				E10FE86E1BDF36650094FCDD /* RecipesNewViewController.swift */,
+				E1A997E01BDA0DBA0036C222 /* GroceryViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E1C49B411BEDBB0100C27447 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E1C49B421BEDBC6D00C27447 /* fontawesome-webfont.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		E1DA82CF1BDF081F006A8FBB /* Model */ = {
@@ -135,9 +178,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1C252351BD90ADE00C7A26D /* Build configuration list for PBXNativeTarget "Cery" */;
 			buildPhases = (
+				EA5CB810BF101939A8198D78 /* Check Pods Manifest.lock */,
 				E1C2521C1BD90ADE00C7A26D /* Sources */,
 				E1C2521D1BD90ADE00C7A26D /* Frameworks */,
 				E1C2521E1BD90ADE00C7A26D /* Resources */,
+				ABF93C21BEBBC923879E4AA9 /* Embed Pods Frameworks */,
+				7B05F510137F2897062A61C2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -187,12 +233,61 @@
 			files = (
 				E173315D1BE5D82200D5354B /* recipeTableCell.xib in Resources */,
 				E1C252311BD90ADE00C7A26D /* LaunchScreen.storyboard in Resources */,
+				E1C49B431BEDBC6D00C27447 /* fontawesome-webfont.ttf in Resources */,
 				E1C2522E1BD90ADE00C7A26D /* Assets.xcassets in Resources */,
 				E1C252291BD90ADE00C7A26D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7B05F510137F2897062A61C2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cery/Pods-Cery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABF93C21BEBBC923879E4AA9 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cery/Pods-Cery-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA5CB810BF101939A8198D78 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E1C2521C1BD90ADE00C7A26D /* Sources */ = {
@@ -324,6 +419,7 @@
 		};
 		E1C252361BD90ADE00C7A26D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88191478A05D0DF98D285669 /* Pods-Cery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Alvin Nguyen (RTAGUFLU6W)";
@@ -338,6 +434,7 @@
 		};
 		E1C252371BD90ADE00C7A26D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 323D98B6BAF29B32F4A74E91 /* Pods-Cery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Alvin Nguyen (RTAGUFLU6W)";

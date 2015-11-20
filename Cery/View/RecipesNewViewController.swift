@@ -228,7 +228,7 @@ class RecipesNewViewController: UIViewController, UITableViewDelegate, UIScrollV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "saveRecipeSegue" {
             selectedRecipe.setValue(self.RecipeNameTextField.text, forKey: "name")
-
+            print("saving")
             // set the image
             if self.uploadedImage != nil {
                 selectedRecipe.setValue(UIImageJPEGRepresentation(self.scaleImage(self.uploadedImage, toSize: CGSize(width: 600, height: 800)), 1), forKey: "photo")
